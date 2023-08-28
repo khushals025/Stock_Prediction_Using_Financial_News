@@ -12,8 +12,7 @@
 - [Sentiment Analysis](#sentiment-analysis)
 - [LSTM model](#lstm-model)
 - [Predictions with News](#predictions-with-news)
-- [Predictions without News](#predictions-without-news)
-- [Results](#results)
+- [Accuracy](#accuracy)
 - [Future Scope](#future-scope)
 
 ## 1. Introduction
@@ -635,15 +634,21 @@ de_predict.append(prediction_sequence[i][j][0] * record_max[m] + record_min[m])
     overall_MSE = sum(squared_error) / len(squared_error)
 ```
 
-## Predictions with News 
+## Stock Predictions
 
-- Here is the prediction for last 9 days using compoud score estimated from sentiment analysis of news articles.
+- Here is the prediction of last 9 days with (using compoud score estimated from sentiment analysis of news articles) and without compoud score.
 
 <div align="center">
-  <img src="
+  <img src="https://github.com/khushals025/Stock_Prediction_Using_Financial_News/blob/main/snp500.jpg?raw=true" alt="Image Alt" width ="2000">
+</div>
     
-## Predictions without News 
+## Accuracy
 
+- Accuracy Comparison
+<div align="center">
+  <img src="" alt="Image Alt" width ="2000">
+</div>
+  
 ## Results
 
 ## Future Scope
