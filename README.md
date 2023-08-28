@@ -646,10 +646,17 @@ de_predict.append(prediction_sequence[i][j][0] * record_max[m] + record_min[m])
 
 - Accuracy Comparison
 <div align="center">
-  <img src="" alt="Image Alt" width ="2000">
+  <img src="https://github.com/khushals025/Stock_Prediction_Using_Financial_News/blob/main/accuracy_2.jpg?raw=true" alt="Image Alt" width="1000">
 </div>
   
 ## Results
+- Model predicts stocks 0.6 % more accurately compared to predictions without compound score(sentiment analysis of news articles)
+- Here because the model was trained with features such as stock price and sentiment, it is able to detect underlying pattern and the relationship between news feed and the variability of stock prices.
+- this model was just trained on 2018 data. Therefore it can be made better to achiever much higher accuracy with large chunks of data and more compute units.
 
+  
 ## Future Scope
+- Uisng real time data from Yahoo Finance and make a BI dashboard.
+- Building a pipeline on any cloud serivice provider to predict real time stcok prices.
+- Research in depth for such targets.
 
