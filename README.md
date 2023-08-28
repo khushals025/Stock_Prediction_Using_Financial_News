@@ -1,5 +1,8 @@
 # Stock Price Prediction using News Articles
 
+<div align="center">
+  <img src="https://www.robomarkets.com/blog/wp-content/uploads/2020/10/16-1.jpg" alt= "Image alt" width="1000">
+</div>
 
 ## Table of Contents
 - [Introduction](#introduction)
