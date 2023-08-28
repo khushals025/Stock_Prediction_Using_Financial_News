@@ -87,7 +87,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 ### 3.2 Stock data
 - Data.zip contains 455 csv files for each company in S&P500 list, with the following attributes:
 - Date, Open_x,	High_x,	Low_x,	Close_x,	Adj, Close_x,	Volume_x,	Open_y,	High_y,	Low_y,	Close_y,	Adj Close_y,	Volume_y
-<img width="1048" alt="image" src="https://github.com/khushals025/Stock_Prediction_Using_Financial_News/assets/124822615/2c3d3d9a-fa8e-4f44-8548-944a147a4547">
+
 - This data ranges from 2007 to 2018. In this project we will be using just the data precisely from 2017-12-07 to 2018-06-01 as this ranges coresponds to the json data's publication dates.
 - Which means if we need to use news data for stock price prediction we should be able to use these dates only.
 
