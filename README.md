@@ -637,6 +637,11 @@ de_predict.append(prediction_sequence[i][j][0] * record_max[m] + record_min[m])
 
 ## Predictions with News 
 
+- Here is the prediction for last 9 days using compoud score estimated from sentiment analysis of news articles.
+
+<div align="center">
+  <img src="
+    
 ## Predictions without News 
 
 ## Results
