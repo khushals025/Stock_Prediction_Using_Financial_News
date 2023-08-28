@@ -11,8 +11,9 @@
 - [News Scraping](#news-scraping)
 - [Sentiment Analysis](#sentiment-analysis)
 - [LSTM model](#lstm-model)
-- [Predictions with News](#predictions-with-news)
+- [Stock Predictions](#stock-predictions)
 - [Accuracy](#accuracy)
+- [Results](#results)
 - [Future Scope](#future-scope)
 
 ## 1. Introduction
@@ -257,7 +258,7 @@ def polarity_score(example):
 - Fixed the date formatting by indexing to just YYY-MM-DD and saved it to "my_sentiments.csv"
 
   
-### Compound Score of Roberta and Vader modules
+### 5.3 Compound Score of Roberta and Vader modules
 
 unlike Vader module, Roberta module does not have a pipeline to evaluate compound score. So, I used the following procedure to compute compound score from positive, negative and neutral sentiment scores of news articles.
 
@@ -281,7 +282,7 @@ print(compound)
 - Merged US_financial_news_articled _with _sentiments.csv with compound score(Roberta) dataframe with index as primary key.
 - Added compound score(Vader) to the resultant dataframe and saved it as "Vader_Roberta_sentiment.csv".
 
-### Splitting 
+### 5.4 Splitting 
 
 - Grouped the resultant dataframe with respect to "source_name"
 
@@ -331,7 +332,7 @@ print(df_4_reuters.shape)
 #(155, 8)
 #(159, 8)
 ```
-### Source_Price
+### 5.5 Source_Price
 
 - snp.csv is a dataframe which has 121 rows and 7 columns.
 
@@ -412,7 +413,7 @@ data_reuters = new_table(df_new_reuters, snp, df_4_reuters)
 
 - It is saved as source_price.csv --> with shape (121, 6)
 
-### Stock Data from 2017-12-07 to 2018-06-01
+### 5.6 Stock Data from 2017-12-07 to 2018-06-01
 - This range of dates corresponds to source_price.csv and 455 other dataframes from S&P 500 list after cutting.
 - As we know original datset for 455 companies enlisted in S&P 500 list range from 2007 to 2018.
 - Therefore, we cut the data and transform it such a way that its attributes(dates) match the source_price.csv so thta we will have a final dataset for running our LSTM model.
@@ -432,7 +433,7 @@ This final dataset will have the following columns:
 - cnbc_mean_compound
 Here stock price will be diffrent for each company enlisted i S&P 500 list. Thats why we will be having 455 such csv files as our final dataset.
 
-## LSTM Model
+## 6. LSTM Model
 
 - Before feeding the data into LSTM model we first split data into test and train.
 - We begin by extracting paths of each csv file ( all 455 files ) and iterate over them.
@@ -554,7 +555,7 @@ model.compile(loss = 'mean_squared_error', optimizer = 'adam')
 model.fit(x_train, y_train, batch_size, epochs )
 ```
 
-### Predictions 
+### 6.1 Predictions 
 - model.predict is used inside a function to loop over all the windows of x_test --> (9,9,5)
 - current_frame is reshaped to (1, input_timesteps, input_dim) using newaxis, which essentially means that you are providing a single input example with input_timesteps time steps and input_dim features. The model then predicts the output for this single example.
 - these predictions are stored in a list.
@@ -589,7 +590,7 @@ model.fit(x_train, y_train, batch_size, epochs )
         prediction_sequence.append(predicted)
 ```
 
-### Denormalization 
+### 6.2 Denormalization 
 
 - Then we denormalize the predicted prices as we normalized them earlier to make computation easy.
 
@@ -634,7 +635,7 @@ de_predict.append(prediction_sequence[i][j][0] * record_max[m] + record_min[m])
     overall_MSE = sum(squared_error) / len(squared_error)
 ```
 
-## Stock Predictions
+## 7. Stock Predictions
 
 - Here is the prediction of last 9 days with (using compoud score estimated from sentiment analysis of news articles) and without compoud score.
 
@@ -642,21 +643,21 @@ de_predict.append(prediction_sequence[i][j][0] * record_max[m] + record_min[m])
   <img src="https://github.com/khushals025/Stock_Prediction_Using_Financial_News/blob/main/snp500.jpg?raw=true" alt="Image Alt" width ="2000">
 </div>
     
-## Accuracy
+## 8. Accuracy
 
 - Accuracy Comparison
 <div align="center">
   <img src="https://github.com/khushals025/Stock_Prediction_Using_Financial_News/blob/main/accuracy_2.jpg?raw=true" alt="Image Alt" width="1000">
 </div>
   
-## Results
+## 9. Results
 - Model predicts stocks 0.6 % more accurately compared to predictions without compound score(sentiment analysis of news articles)
 - Here because the model was trained with features such as stock price and sentiment, it is able to detect underlying pattern and the relationship between news feed and the variability of stock prices.
 - this model was just trained on 2018 data. Therefore it can be made better to achiever much higher accuracy with large chunks of data and more compute units.
 
   
-## Future Scope
+## 10. Future Scope
 - Uisng real time data from Yahoo Finance and make a BI dashboard.
-- Building a pipeline on any cloud serivice provider to predict real time stcok prices.
+- Building a pipeline on any cloud serivice provider to predict real time stock prices.
 - Research in depth for such targets.
 
